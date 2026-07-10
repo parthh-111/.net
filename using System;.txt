@@ -1,0 +1,53 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using ArithmeticMVC.Models;
+//using Microsoft.AspNetCore.Mvc;
+
+
+
+namespace ArithmeticMVC.Controllers
+{
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            return View(new ArithmeticModel());
+        }
+
+        [HttpPost]
+        public ActionResult Index(ArithmeticModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                switch (model.Opertaion)
+                {
+                    case "Add":
+                        model.Result = model.Number1 + model.Number2;
+                        break;
+                    case "Subtract":
+                        model.Result = model.Number1 - model.Number2;
+                        break;
+                    case "Multiply":
+                        model.Result = model.Number1 * model.Number2;
+                        break;
+                    case "Divide":
+                        if (model.Number2 == 0)
+                        {
+                            model.ErrorMessage = " Error : DIvision by zero !";
+                        }
+                        else
+                        {
+                            model.Result = model.Number1 / model.Number2;
+                        }
+                        break;
+                }
+            }
+
+            return View(model);
+        }
+    }
+}
+   

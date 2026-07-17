@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CitySorting
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string[] cities = new string[10];
+
+            Console.WriteLine("Enter the names of 10 cities:");
+
+            for(int i=0;i<10;i++)
+            {
+                Console.Write("City" + (i + 1) + ": ");
+                cities[i] = Console.ReadLine();
+            }
+            Array.Sort(cities);
+            Console.WriteLine("\n Cities in Alphabetical Order:");
+
+            foreach(string city in cities)
+            {
+                Console.WriteLine(city);
+            }
+            Console.ReadKey();
+        }
+    }
+}

@@ -22,7 +22,7 @@ namespace ArithmeticMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                switch (model.Opertaion)
+                switch (model.Operation)
                 {
                     case "Add":
                         model.Result = model.Number1 + model.Number2;
@@ -50,4 +50,3 @@ namespace ArithmeticMVC.Controllers
         }
     }
 }
-   

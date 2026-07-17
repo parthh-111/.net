@@ -1,43 +1,51 @@
-@Model ArithmeticMVC.Models.ArithmeticModel
-@{ 
-    ViewData["Title"] = "Arithmetic Operations";
+@model ArithmeticMVC.Models.ArithmeticModel
+    @{ 
+        ViewBag.Title = "Arethmetic Operations";
+    }
+<h2>Arethmetic Operation</h2>
+@using (Html.BeginForm())
+{
+                <table>
+                    <tr>
+                        <td>Fisrt Number</td>
+                        <td>@Html.TextBoxFor(m => m.Number1)
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            Second Number
+                        </td>
+                        <td>@Html.TextBoxFor(m => m.Number2)</td>
+                    </tr>
+
+                    <tr>
+                        <td>Operation</td>
+                        <td>
+                            @Html.DropDownListFor(m => m.Operation, new SelectList(new[]
+    {
+                           "Add",
+                           "Subtract",
+                           "Multiply",
+                           "Divide"
+                       }))
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <input type="submit" value="calculate"/>
+                        </td>
+                    </tr>
+                </table>
+
 }
 
-<h2 class="text-center mt-3">Basic Aeithmetic Opertaions</h2>
-<hr/>
-
-<div class="container">
-    <form asp-action="Index" method="post">
-        <div class="rpw text-justify-content-center">
-            <div class="col-md-6">
-                <div class="mb-3">
-                    <label asp-for="Number1" class="form-label"></label>
-                    <input asp-for="Number1" class="form-control"/>
-                    <span asp-validation-fpr="Number1" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
-                    <label asp-for="Number2" class="form-label"></label>
-                    <input asp-for="Number2" class="form-control" />
-                    <span asp-validation-fpr="Number2" class="text-danger"></span>
-                </div>
-                <div class="mb-3">
-                    <button type="submit" name="Operation" value="Add" class="btn btn-primary">Add(+)</button>
-                    <button type="submit" name="Operation" value="Subtract" class="btn btn-warning">Subtract(-)</button>
-                    <button type="submit" name="Operation" value="Multiply" class="btn btn-success">Multiply(*)</button>
-                    <button type="submit" name="Operation" value="Divide" class="btn btn-danger">Divide(/)</button>
-                </div>
-                @if (Model.ErrorMessage !=" ")
+@if(!string.IsNullOrEmpty(Model.ErrorMessage))
             {
-                <div class="alert alert-danger">@Model.ErrorMessage</div>
-                }
-                else if (Model.Operation != "")
+                <h3 style="color:red">@Model.ErrorMessage</h3>
+}
+else if (Model.Operation!=null)
             {
-                <div class="alert alert-success">
-                    <strong>Result:</strong> @Model.Number1 @Model.Operation @Model.Number2 = @Model.Result
-
-                </div>
+                <h3>Result = @Model.Result</h3>
             }
-            </div>
-        </div>
-    </form>
-</div>

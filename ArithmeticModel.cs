@@ -16,7 +16,7 @@ namespace ArithmeticMVC.Models
         [Display(Name = "SEcond Number")]
         public double Number2 { get; set; }
 
-        public string Opertaion { get; set; } = " ";
+        public string Operation { get; set; } = " ";
         public double Result { get; set; }
         public string ErrorMessage { get; set; } = "";
     }

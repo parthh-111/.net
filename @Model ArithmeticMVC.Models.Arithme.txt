@@ -1,51 +1,55 @@
 @model ArithmeticMVC.Models.ArithmeticModel
-    @{ 
-        ViewBag.Title = "Arethmetic Operations";
-    }
-<h2>Arethmetic Operation</h2>
-@using (Html.BeginForm())
-{
+
+@{ 
+    ViewBag.Title = "Arithmetic Operations";
+
+}
+
+<h2>Arithmetic Operations</h2>
+
+@using(Html.BeginForm())
+            {
                 <table>
                     <tr>
-                        <td>Fisrt Number</td>
-                        <td>@Html.TextBoxFor(m => m.Number1)
-                        </td>
+                        <td>First Number</td>
+                        <td>@Html.TextBoxFor(m=>m.Number1)</td>
                     </tr>
 
                     <tr>
-                        <td>
-                            Second Number
-                        </td>
+                        <td>Second Number</td>
                         <td>@Html.TextBoxFor(m => m.Number2)</td>
                     </tr>
 
                     <tr>
                         <td>Operation</td>
                         <td>
-                            @Html.DropDownListFor(m => m.Operation, new SelectList(new[]
-    {
-                           "Add",
-                           "Subtract",
-                           "Multiply",
-                           "Divide"
-                       }))
+                            @Html.DropDownListFor(m=>m.Operation,
+                            new SelectList(new[]
+                            {
+                                "Add",
+                                "Subtract",
+                                "Multiply",
+                                "Divide",
+                            }))
+
                         </td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>
-                            <input type="submit" value="calculate"/>
+                            <input type="submit" value="Calculate"/>
                         </td>
                     </tr>
                 </table>
-
 }
-
-@if(!string.IsNullOrEmpty(Model.ErrorMessage))
+@if (!string.IsNullOrEmpty(Model.ErrorMessage))
             {
-                <h3 style="color:red">@Model.ErrorMessage</h3>
-}
-else if (Model.Operation!=null)
-            {
-                <h3>Result = @Model.Result</h3>
+                <h3 style="color.red">@Model.ErrorMessage</h3>
             }
+ else if (Model.Operation!=null)
+{
+                <h3>Result=@Model.Result</h3>
+}
+
+
+

@@ -1,0 +1,35 @@
+#xml file
+<?xml version="1.0" encoding="utf-8" ?>
+<Advertisements>
+	<Ad>
+		<ImageUrl>Images/p2.jpg</ImageUrl>
+		<NavigateUrl>https://www.dell.com</NavigateUrl>
+		<Alternate>Dell Laptop</Alternate>
+		<Impressions>50</Impressions>
+		<Keyword>Laptop</Keyword>
+	</Ad>
+</Advertisements>
+
+#need a image file and add an image into the image file
+
+
+
+
+#html code
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdRotatorDemo.aspx.cs" Inherits="AdRotator.AdRotatorDemo" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <h2>AdRotator Example</h2>
+    <form id="form1" runat="server">
+        <div>
+            <asp:AdRotator ID="AdRotator1" runat="server" Height="300px" Width="300px" AdvertisementFile="~/Ads.xml" />
+        </div>
+    </form>
+</body>
+</html>

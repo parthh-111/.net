@@ -1,0 +1,99 @@
+#Logic code
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace StudentRegistration
+{
+    public partial class StudentForm : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            string gender = "";
+
+            if(rbMale.Checked){
+                gender = "Male";
+            }
+            else if(rbFemale.Checked){
+                gender = "Female";
+            }
+            if (chkTerms.Checked)
+            {
+                lblOutput.Text = "Student Name:" + txtName.Text +
+                    "<br/>Gender:" + gender +
+                    "<br/>Course:" + ddlCourse.SelectedValue +
+                    "<br/>Date:" + calDate.SelectedDate.ToShortDateString(); 
+
+            }
+        }
+    }
+}
+
+
+#Html code
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="StudentForm.aspx.cs" Inherits="StudentRegistration.StudentForm" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <h2>Welcome to Ruparel</h2>
+    <form id="form1" runat="server">
+        <p>
+            <asp:Label ID="Label1" runat="server" Text="Student Name"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
+        </p>
+        <p>
+            <asp:Label ID="Label2" runat="server" Text="Gender"></asp:Label>
+&nbsp;
+            <asp:RadioButton ID="rbFemale" runat="server" GroupName="Gender" Text="Female" />
+&nbsp;
+            <asp:RadioButton ID="rbMale" runat="server" GroupName="Gender" Text="Male" />
+        </p>
+        <p>
+            <asp:Label ID="Label3" runat="server" Text="Courses"></asp:Label>
+&nbsp;&nbsp;
+            <asp:DropDownList ID="ddlCourse" runat="server">
+                <asp:ListItem>Bsc-IT</asp:ListItem>
+                <asp:ListItem>Bsc-CS</asp:ListItem>
+                <asp:ListItem>BCA</asp:ListItem>
+            </asp:DropDownList>
+        </p>
+        <p>
+            <asp:CheckBox ID="chkTerms" runat="server" Text="Accept Terms &amp; Conditions" />
+        </p>
+        <p>
+            <asp:Calendar ID="calDate" runat="server" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" Width="350px">
+                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
+                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
+                <OtherMonthDayStyle ForeColor="#999999" />
+                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
+                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
+                <TodayDayStyle BackColor="#CCCCCC" />
+            </asp:Calendar>
+        </p>
+        <p>
+            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Submit" />
+        </p>
+        <p>
+            <asp:Label ID="lblOutput" runat="server" Text="Output"></asp:Label>
+        </p>
+        <p>&nbsp;</p>
+        <div>
+        </div>
+    </form>
+</body>
+</html>
+

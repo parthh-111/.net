@@ -1,0 +1,81 @@
+#Html file
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registration.aspx.cs" Inherits="ValidationControl.Registration" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+        <div>
+            <asp:Label ID="Label1" runat="server" Text="Name:"></asp:Label>
+            &nbsp;
+            <asp:TextBox ID="txtName" runat="server" Height="24px" Width="129px"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtName" ErrorMessage="Name Required"></asp:RequiredFieldValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label2" runat="server" Text="Email:"></asp:Label>
+&nbsp;<asp:TextBox ID="txtEmail" runat="server" Height="24px" Width="129px"></asp:TextBox>
+&nbsp;<asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtEmail" ErrorMessage="Invalid Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label3" runat="server" Text="Age:"></asp:Label>
+&nbsp;<asp:TextBox ID="txtAge" runat="server" Height="24px" Width="129px"></asp:TextBox>
+            <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="txtAge" ErrorMessage="Age must be between 18 and 60" MaximumValue="60" MinimumValue="18" Type="Integer"></asp:RangeValidator>
+            <br />
+            <br />
+            <asp:Label ID="Label4" runat="server" Text="Password:"></asp:Label>
+&nbsp;<asp:TextBox ID="txtPassword" runat="server" Height="24px" Width="129px"></asp:TextBox>
+            <br />
+            <br />
+            <asp:Label ID="Label5" runat="server" Text="Confirm Password:"></asp:Label>
+&nbsp;
+            <asp:TextBox ID="txtConfirmPassword" runat="server" Height="24px" Width="129px"></asp:TextBox>
+            <asp:CompareValidator ID="CompareValidator1" runat="server" ControlToCompare="txtPassword" ControlToValidate="txtConfirmPassword" ErrorMessage="Password does not match"></asp:CompareValidator>
+            <br />
+            <br />
+            <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Register" />
+            <br />
+            <br />
+            <asp:Label ID="lblOutput" runat="server" Text="Output"></asp:Label>
+            <br />
+            <br />
+        </div>
+    </form>
+</body>
+</html>
+
+#code file
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace ValidationControl
+{
+    public partial class Registration : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (Page.IsValid)
+            {
+                lblOutput.Text = "Registration Successful";
+            }
+        }
+    }
+}
+
+#add appsettings tag under config tag
+<appSettings>
+		<add key="ValidationSettings:UnobtrusiveValidationMode" value="None"/>
+	</appSettings>
